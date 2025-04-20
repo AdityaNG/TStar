@@ -43,6 +43,22 @@ git clone https://github.com/LLaVA-VL/LLaVA-NeXT
 git clone --recursive https://github.com/AILab-CVC/YOLO-World.git
 ```
 
+Environment setup
+```
+conda create -n tstar python=3.10 -y
+conda activate tstar
+conda install -c nvidia/label/cuda-12.4.0 cuda-toolkit
+conda install pytorch=2.5.1 torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
+pip install -r requirements.txt
+```
+
+Run on a video
+```
+export OPENAI_API_KEY=your_openai_api_key
+
+python3 -m LVHaystackBench.single_run_TStar
+```
+
 ### Structure:
 ```bash
 LV-Haystack/
