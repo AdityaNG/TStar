@@ -56,7 +56,81 @@ Run on a video
 ```
 export OPENAI_API_KEY=your_openai_api_key
 
-python3 -m LVHaystackBench.single_run_TStar
+python -m LVHaystackBench.single_run_TStar \
+    --video_path "media/forklift_mini.mp4" \
+    --question "What is the color forklift driver's shirt?" \
+    --options "A) Red\nB) Black\nC) Blue\nD) White"
+```
+
+Results:
+
+
+<img src="assets/search_iterations.gif">
+
+
+```
+2025-04-20 13:51:24,428 [INFO] PyTorch version 2.5.1 available.
+2025-04-20 13:51:27,263 [INFO] OWLInterface initialized successfully.
+2025-04-20 13:51:30,255 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-20 13:51:30,256 [INFO] Target objects: ['forklift driver', 'shirt']
+2025-04-20 13:51:30,256 [INFO] Cue objects: ['forklift', 'steering wheel', 'control panel', 'mirror']
+Searching Iterations:   6%|████▍                                                                   | 4/65 [00:13<03:24,  3.35s/iter]Warning: Not enough non-zero entries, adjusting probability distribution.
+Searching Iterations:   8%|█████▌                                                                  | 5/65 [00:16<03:21,  3.35s/iter]
+2025-04-20 13:51:47,116 [INFO] Saved frame to ./results/frame_search/forklift_mini/What is the color forklift driver's shirt/frames/frame_0_at_4.00s.jpg
+2025-04-20 13:51:47,116 [INFO] Saved frame to ./results/frame_search/forklift_mini/What is the color forklift driver's shirt/frames/frame_1_at_6.00s.jpg
+2025-04-20 13:51:47,117 [INFO] Saved frame to ./results/frame_search/forklift_mini/What is the color forklift driver's shirt/frames/frame_2_at_18.00s.jpg
+2025-04-20 13:51:47,117 [INFO] Saved frame to ./results/frame_search/forklift_mini/What is the color forklift driver's shirt/frames/frame_3_at_20.00s.jpg
+2025-04-20 13:51:47,118 [INFO] Saved frame to ./results/frame_search/forklift_mini/What is the color forklift driver's shirt/frames/frame_4_at_28.00s.jpg
+2025-04-20 13:51:47,119 [INFO] Saved frame to ./results/frame_search/forklift_mini/What is the color forklift driver's shirt/frames/frame_5_at_30.00s.jpg
+2025-04-20 13:51:47,119 [INFO] Saved frame to ./results/frame_search/forklift_mini/What is the color forklift driver's shirt/frames/frame_6_at_45.00s.jpg
+2025-04-20 13:51:47,120 [INFO] Saved frame to ./results/frame_search/forklift_mini/What is the color forklift driver's shirt/frames/frame_7_at_60.00s.jpg
+Saved GIF: ./results/frame_search/forklift_mini/What is the color forklift driver's shirt/search_iterations.gif
+2025-04-20 13:51:54,191 [INFO] Saved search iterations GIF to ./results/frame_search/forklift_mini/What is the color forklift driver's shirt/search_iterations.gif
+Plot saved to ./results/frame_search/forklift_mini/What is the color forklift driver's shirt/score_distribution.png
+2025-04-20 13:51:54,396 [INFO] Score distribution plot saved to ./results/frame_search/forklift_mini/What is the color forklift driver's shirt/score_distribution.png
+2025-04-20 13:51:54,396 [INFO] Found 8 frames, timestamps: [4.0, 6.0, 18.0, 20.0, 28.0, 30.0, 45.0, 60.0]
+#################### Original Inputs ####################
+Input Quetion: What is the color forklift driver's shirt?
+Input Options: A) Red\nB) Black\nC) Blue\nD) White
+#################### T* Searching Results ####################
+Grounding Objects: target_objects: ['forklift driver', 'shirt'], cue_objects: ['forklift', 'steering wheel', 'control panel', 'mirror']
+Frame Timestamps: [4.0, 6.0, 18.0, 20.0, 28.0, 30.0, 45.0, 60.0]
+Processed Video Path: media/forklift_mini.mp4
+Results:
+{
+    "video_path": "media/forklift_mini.mp4",
+    "grounding_objects": {
+        "target_objects": [
+            "forklift driver",
+            "shirt"
+        ],
+        "cue_objects": [
+            "forklift",
+            "steering wheel",
+            "control panel",
+            "mirror"
+        ]
+    },
+    "keyframe_timestamps": [
+        4.0,
+        6.0,
+        18.0,
+        20.0,
+        28.0,
+        30.0,
+        45.0,
+        60.0
+    ],
+    "keyframe_distribution": [
+        0.01530221096773617,
+        0.015308537995638149,
+        0.015314750712846577,
+        ...
+        0.015321293611050668,
+        0.015312678687498466,
+        0.01530369160273748
+    ]
+}
 ```
 
 ### Structure:
